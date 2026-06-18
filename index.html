@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股日报 | 2026年6月17日 周三</title>
+<style>
+  :root {
+    --bg: #0f0f14;
+    --card-bg: #1a1a24;
+    --text: #e8e8ed;
+    --text-secondary: #9ca3af;
+    --accent: #ff6b35;
+    --accent-light: #ff8c5a;
+    --gradient-start: #ff4d1c;
+    --gradient-end: #ff8c3a;
+    --up: #ef4444;
+    --down: #22c55e;
+    --border: #2a2a38;
+    --chip-bg: #252535;
+    --hero-bg: linear-gradient(135deg, #1a0a05 0%, #2d1210 40%, #1a1020 100%);
+    --shadow: 0 4px 24px rgba(0,0,0,0.3);
+    --radius: 12px;
+    --font-mono: 'SF Mono', 'Cascadia Code', 'JetBrains Mono', 'Menlo', monospace;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-sans); background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
+
+  .hero { background: var(--hero-bg); position: relative; overflow: hidden; padding: 60px 24px 48px; text-align: center; }
+  .hero::before { content:''; position:absolute; top:-50%; left:-20%; width:140%; height:200%; background: radial-gradient(ellipse at 30% 50%, rgba(255,107,53,0.12) 0%, transparent 60%), radial-gradient(ellipse at 70% 50%, rgba(255,77,28,0.08) 0%, transparent 60%); pointer-events:none; }
+  .hero::after { content:''; position:absolute; bottom:0; left:0; right:0; height:60px; background:linear-gradient(to top, var(--bg), transparent); pointer-events:none; }
+  .hero-content { position:relative; z-index:1; max-width:900px; margin:0 auto; }
+  .hero-badge { display:inline-block; padding:6px 18px; border-radius:20px; background:linear-gradient(135deg, rgba(255,77,28,0.2), rgba(255,139,58,0.2)); border:1px solid rgba(255,107,53,0.3); color:var(--accent-light); font-size:13px; font-weight:600; letter-spacing:0.5px; margin-bottom:20px; }
+  .hero h1 { font-size:clamp(28px, 5vw, 48px); font-weight:800; background:linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 50%, #ffb347 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:8px; letter-spacing:-0.5px; }
+  .hero-date { font-size:16px; color:var(--text-secondary); margin-bottom:28px; }
+  .hero-stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; }
+  .hero-stat { text-align:center; min-width:80px; }
+  .hero-stat .num { font-size:32px; font-weight:800; font-family:var(--font-mono); color:var(--accent-light); line-height:1; }
+  .hero-stat .label { font-size:12px; color:var(--text-secondary); margin-top:6px; }
+  .hero-stat.total .num { font-size:48px; color:#fff; }
+
+  .nav-bar { position:sticky; top:0; z-index:100; background:rgba(15,15,20,0.92); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-bottom:1px solid var(--border); padding:0 16px; overflow-x:auto; white-space:nowrap; scrollbar-width:none; }
+  .nav-bar::-webkit-scrollbar { display:none; }
+  .nav-inner { max-width:1100px; margin:0 auto; display:flex; gap:4px; padding:8px 0; }
+  .nav-inner a { display:inline-flex; align-items:center; gap:6px; padding:8px 16px; border-radius:20px; color:var(--text-secondary); text-decoration:none; font-size:13px; font-weight:500; transition:all 0.2s; white-space:nowrap; }
+  .nav-inner a:hover, .nav-inner a.active { background:rgba(255,107,53,0.15); color:var(--accent-light); }
+  .nav-count { font-size:11px; background:rgba(255,107,53,0.2); color:var(--accent-light); padding:1px 7px; border-radius:10px; font-family:var(--font-mono); }
+
+  .main { max-width:1100px; margin:0 auto; padding:32px 16px 60px; }
+  .section { margin-bottom:48px; }
+  .section-header { display:flex; align-items:center; gap:12px; margin-bottom:24px; padding-bottom:12px; border-bottom:2px solid var(--border); }
+  .section-icon { width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+  .section-header h2 { font-size:20px; font-weight:700; flex:1; }
+  .section-header .badge { font-size:12px; color:var(--text-secondary); font-weight:500; background:var(--chip-bg); padding:4px 12px; border-radius:12px; }
+  .sec-1 .section-icon { background:rgba(255,77,28,0.15); }
+  .sec-2 .section-icon { background:rgba(59,130,246,0.15); }
+  .sec-3 .section-icon { background:rgba(168,85,247,0.15); }
+  .sec-4 .section-icon { background:rgba(234,179,8,0.15); }
+  .sec-5 .section-icon { background:rgba(34,197,94,0.15); }
+  .sec-info .section-icon { background:rgba(251,191,36,0.15); }
+
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:16px; }
+  .card { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius); padding:18px 20px; position:relative; transition:all 0.25s ease; opacity:0; transform:translateY(24px); animation:fadeInUp 0.5s forwards; }
+  .card:hover { border-color:rgba(255,107,53,0.3); transform:translateY(-2px); box-shadow:var(--shadow); }
+  .card.num-idx { border-left:3px solid var(--accent); }
+  .card.num-hot { border-left:3px solid #ef4444; }
+  .card.num-info { border-left:3px solid #fbbf24; }
+  @keyframes fadeInUp { to { opacity:1; transform:translateY(0); } }
+  .card-num { position:absolute; top:-10px; left:-10px; width:28px; height:28px; border-radius:50%; background:linear-gradient(135deg, var(--gradient-start), var(--gradient-end)); color:#fff; font-size:12px; font-weight:700; font-family:var(--font-mono); display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(255,77,28,0.3); }
+  .card-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; flex-wrap:wrap; gap:8px; }
+  .card-title { font-size:15px; font-weight:700; line-height:1.4; flex:1; min-width:0; }
+  .price-change { font-family:var(--font-mono); font-size:14px; font-weight:700; white-space:nowrap; }
+  .up { color:var(--up); } .down { color:var(--down); }
+  .card-chips { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px; }
+  .chip { display:inline-block; padding:3px 10px; border-radius:12px; font-size:11px; font-weight:600; white-space:nowrap; }
+  .chip-tag { background:var(--chip-bg); color:var(--text-secondary); }
+  .chip-hot { background:rgba(239,68,68,0.12); color:#f87171; }
+  .chip-up { background:rgba(239,68,68,0.1); color:var(--up); }
+  .chip-down { background:rgba(34,197,94,0.1); color:var(--down); }
+  .chip-info { background:rgba(251,191,36,0.12); color:#fbbf24; }
+  .card-summary { font-size:13px; color:var(--text-secondary); line-height:1.6; margin-bottom:12px; }
+  .card-footer { display:flex; align-items:center; justify-content:space-between; }
+  .card-time { font-size:12px; color:#6b7280; }
+
+  .index-cards { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:12px; margin-bottom:20px; }
+  .index-card { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius); padding:16px; text-align:center; opacity:0; transform:translateY(16px); animation:fadeInUp 0.4s forwards; }
+  .index-card .index-name { font-size:13px; color:var(--text-secondary); margin-bottom:6px; }
+  .index-card .index-price { font-size:22px; font-weight:800; font-family:var(--font-mono); margin-bottom:4px; }
+  .index-card .index-change { font-size:14px; font-weight:700; font-family:var(--font-mono); }
+  .index-card .index-extra { font-size:11px; color:#6b7280; margin-top:6px; font-family:var(--font-mono); }
+
+  .market-overview { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius); padding:24px; display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:20px; opacity:0; animation:fadeInUp 0.4s 0.1s forwards; }
+  .mo-item { text-align:center; }
+  .mo-item .mo-value { font-size:24px; font-weight:800; font-family:var(--font-mono); }
+  .mo-item .mo-label { font-size:12px; color:var(--text-secondary); margin-top:4px; }
+
+  .footer { max-width:1100px; margin:0 auto; padding:24px 16px 40px; text-align:center; border-top:1px solid var(--border); }
+  .footer p { font-size:12px; color:#6b7280; line-height:1.8; }
+  .footer .disclaimer { margin-top:12px; color:#4b5563; font-size:11px; }
+  @media (max-width:640px) { .hero{padding:40px 16px 36px} .hero-stats{gap:16px} .hero-stat .num{font-size:24px} .hero-stat.total .num{font-size:36px} .card-grid{grid-template-columns:1fr} .index-cards{grid-template-columns:repeat(2,1fr)} .market-overview{grid-template-columns:repeat(2,1fr)} .section-header h2{font-size:17px} }
+  .card:nth-child(1){animation-delay:0.02s} .card:nth-child(2){animation-delay:0.04s} .card:nth-child(3){animation-delay:0.06s} .card:nth-child(4){animation-delay:0.08s} .card:nth-child(5){animation-delay:0.10s} .card:nth-child(6){animation-delay:0.12s} .card:nth-child(7){animation-delay:0.14s} .card:nth-child(8){animation-delay:0.16s} .card:nth-child(9){animation-delay:0.18s} .card:nth-child(10){animation-delay:0.20s} .card:nth-child(n+11){animation-delay:0.22s}
+  .index-card:nth-child(1){animation-delay:0.02s} .index-card:nth-child(2){animation-delay:0.06s} .index-card:nth-child(3){animation-delay:0.10s} .index-card:nth-child(4){animation-delay:0.14s} .index-card:nth-child(5){animation-delay:0.18s}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-content">
+    <span class="hero-badge">📊 老郑团队 · 每日精选</span>
+    <h1>A股日报</h1>
+    <p class="hero-date">2026年6月17日 · 周三 · 收盘复盘</p>
+    <div class="hero-stats">
+      <div class="hero-stat total"><div class="num">35</div><div class="label">总条数</div></div>
+      <div class="hero-stat"><div class="num">7</div><div class="label">大盘指数</div></div>
+      <div class="hero-stat"><div class="num">8</div><div class="label">行业板块</div></div>
+      <div class="hero-stat"><div class="num">7</div><div class="label">概念热点</div></div>
+      <div class="hero-stat"><div class="num">13</div><div class="label">资金与情绪</div></div>
+      <div class="hero-stat"><div class="num">5</div><div class="label">热门个股</div></div>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-bar" id="nav">
+  <div class="nav-inner">
+    <a href="#sec-market">📈 大盘指数<span class="nav-count">7</span></a>
+    <a href="#sec-sector">🏭 行业板块<span class="nav-count">8</span></a>
+    <a href="#sec-concept">🔥 概念热点<span class="nav-count">7</span></a>
+    <a href="#sec-fund">💰 资金与情绪<span class="nav-count">13</span></a>
+    <a href="#sec-stocks">🎯 热门个股<span class="nav-count">5</span></a>
+  </div>
+</nav>
+
+<main class="main">
+
+<!-- ===== SECTION 1 ===== -->
+<section class="section sec-1" id="sec-market">
+  <div class="section-header"><div class="section-icon">📈</div><h2>一、大盘指数</h2><span class="badge">Market</span></div>
+
+  <div class="index-cards">
+    <div class="index-card num-idx"><div class="index-name">上证指数</div><div class="index-price">4091.34</div><div class="index-change down">-0.06%</div><div class="index-extra">开盘冲高回落 窄幅震荡</div></div>
+    <div class="index-card num-idx"><div class="index-name">科创50</div><div class="index-price">1840.00</div><div class="index-change up">+4.69% 🚀</div><div class="index-extra">今日全市场涨幅之王</div></div>
+    <div class="index-card num-idx"><div class="index-name">深证成指</div><div class="index-price" style="color:var(--up)">15784.34</div><div class="index-change up">+0.70%</div><div class="index-extra">科技股驱动上行</div></div>
+    <div class="index-card num-idx"><div class="index-name">创业板指</div><div class="index-price" style="color:var(--up)">4116.36</div><div class="index-change up">+0.33%</div><div class="index-extra">半导体+新能源双轮驱动</div></div>
+    <div class="index-card num-idx"><div class="index-name">沪深300</div><div class="index-price" style="color:var(--down)">4289.78</div><div class="index-change down">-0.03%</div><div class="index-extra">权重表现平淡 资金腾挪明显</div></div>
+  </div>
+
+  <div class="market-overview">
+    <div class="mo-item"><div class="mo-value" style="color:var(--accent-light)">3.09万亿</div><div class="mo-label">两市成交额</div></div>
+    <div class="mo-item"><div class="mo-value" style="color:var(--accent-light)">沪1.4/深1.69</div><div class="mo-label">沪市/深市</div></div>
+    <div class="mo-item"><div class="mo-value" style="color:var(--up)">1639</div><div class="mo-label">上涨家数</div></div>
+    <div class="mo-item"><div class="mo-value" style="color:var(--down)">3793</div><div class="mo-label">下跌家数</div></div>
+    <div class="mo-item"><div class="mo-value" style="color:var(--up)">科技批量</div><div class="mo-label">涨停方向</div></div>
+    <div class="mo-item"><div class="mo-value" style="color:var(--down)">指数牛个股熊</div><div class="mo-label">结构性分化</div></div>
+  </div>
+
+  <div class="card-grid" style="margin-top:20px">
+    <div class="card num-idx" id="card-1"><span class="card-num">1</span>
+      <div class="card-header"><span class="card-title">大盘分化：沪指微跌0.06%，科创50却暴涨4.69%</span></div>
+      <div class="card-chips"><span class="chip chip-hot">科创50暴涨</span></div>
+      <div class="card-summary">三大指数全线收红，上证跌0.06%看似平淡，但科创50暴涨4.69%——这盘面像极了火锅局，科创负责涮毛肚，主板负责烫白菜。3793只个股下跌，涨幅高度集中于少数科技权重。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+    <div class="card num-idx" id="card-2"><span class="card-num">2</span>
+      <div class="card-header"><span class="card-title">3793只个股下跌——指数涨了你钱没涨</span></div>
+      <div class="card-chips"><span class="chip chip-warn">指数牛个股熊</span></div>
+      <div class="card-summary">只有少数权重科技股和龙头品种在涨，大量中小盘股处于失血状态。这不是普涨，是典型的"结构性牛市+传统行业震荡"双轨格局。你的持仓如果在非科技方向，今天大概率亏钱。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 2 ===== -->
+<section class="section sec-2" id="sec-sector">
+  <div class="section-header"><div class="section-icon">🏭</div><h2>二、行业板块</h2><span class="badge">Sector</span></div>
+  <div class="card-grid">
+    <div class="card num-idx" id="card-3"><span class="card-num">3</span>
+      <div class="card-header"><span class="card-title">半导体+4.13%称霸全场，电子化学品、存储、设备全线开花</span><span class="price-change up">+4.13%</span></div>
+      <div class="card-chips"><span class="chip chip-hot">全产业链爆发</span><span class="chip chip-tag">瑞银研报看多</span></div>
+      <div class="card-summary">半导体方向从设备到材料到存储芯片全面开花。瑞银研报看好代理式AI驱动半导体进一步上行，科创板第五套标准拟扩容AI大模型——政策和需求双轮催化。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+    <div class="card num-idx" id="card-4"><span class="card-num">4</span>
+      <div class="card-header"><span class="card-title">元件/PCB涨停潮，覆铜板龙头年内多轮涨价</span><span class="price-change up">涨停潮</span></div>
+      <div class="card-chips"><span class="chip chip-up">涨价驱动</span><span class="chip chip-tag">MLCC景气</span></div>
+      <div class="card-summary">一博科技、贤丰控股、华正新材、深南电路、鹏鼎控股批量涨停。AI算力基建对高端PCB和MLCC需求旺盛，缺货潮正在从存储芯片往被动元件扩散。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+    <div class="card num-idx" id="card-5"><span class="card-num">5</span>
+      <div class="card-header"><span class="card-title">商业航天全线爆发，23只涨停或涨幅超10%</span><span class="price-change up">23只涨停</span></div>
+      <div class="card-chips"><span class="chip chip-hot">调整后爆发</span></div>
+      <div class="card-summary">铂力特开盘20分钟封死20%涨停，板块经多日调整后突然爆发。三大利好集中释放，卫星ETF涨幅居前，资金回补意愿强烈——是真反转还是超跌反弹，关键看明天能否连板。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+    <div class="card num-idx" id="card-6"><span class="card-num">6</span>
+      <div class="card-header"><span class="card-title">煤炭跌3.11%，旅游影视显著走弱——传统行业失血确认</span><span class="price-change down">-3.11%</span></div>
+      <div class="card-chips"><span class="chip chip-down">传统行业失血</span></div>
+      <div class="card-summary">资金从传统行业往科技赛道大规模腾挪，煤炭、旅游、影视等方向跌幅明显。不追热门的热门，但也别割冷门——前提是你确认手里的不是基本面恶化的票。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+    <div class="card num-idx" id="card-7"><span class="card-num">7</span>
+      <div class="card-header"><span class="card-title">国家大基金持股+5.07%，政策保驾护航</span><span class="price-change up">+5.07%</span></div>
+      <div class="card-chips"><span class="chip chip-tag">国家大基金</span></div>
+      <div class="card-summary">大基金持股方向涨幅全市场领先，半导体ETF成交活跃。央行推中长期资金入市，证监会严查蹭热点——资金往硬科技集中的信号很明确。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+    <div class="card num-idx" id="card-8"><span class="card-num">8</span>
+      <div class="card-header"><span class="card-title">电子纸+4.16%首次上榜——新面孔意味着什么？</span><span class="price-change up">+4.16%</span></div>
+      <div class="card-chips"><span class="chip chip-tag">首次上榜</span></div>
+      <div class="card-summary">电子纸概念首次进入热榜，在半导体光芒下不那么显眼，但"首次上榜"往往是初期资金布局的关键信号。容量虽小，但低位介入性价比高。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+    <div class="card num-idx" id="card-9"><span class="card-num">9</span>
+      <div class="card-header"><span class="card-title">培育钻石+1.48%连续活跃，10天9次上榜</span><span class="price-change up">+1.48%</span></div>
+      <div class="card-chips"><span class="chip chip-tag">10天9次上榜</span></div>
+      <div class="card-summary">培育钻石维持高活跃度，10个交易日内9次进入热榜。板块容量小，适合小仓位试探，但不适合重仓——流动性是大问题。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+    <div class="card num-idx" id="card-10"><span class="card-num">10</span>
+      <div class="card-header"><span class="card-title">先进封装+3.90%延续强势，16家涨停</span><span class="price-change up">+3.90%</span></div>
+      <div class="card-chips"><span class="chip chip-hot">16家涨停</span></div>
+      <div class="card-summary">先进封装连续上榜，是半导体产业链中确定性最强的细分方向。芯片ETF持续吸引资金，对比CPO和存储，先进封装的拥挤度相对可控。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 3 ===== -->
+<section class="section sec-3" id="sec-concept">
+  <div class="section-header"><div class="section-icon">🔥</div><h2>三、概念热点</h2><span class="badge">Concept</span></div>
+  <div class="card-grid">
+    <div class="card num-hot" id="card-11"><span class="card-num">11</span>
+      <div class="card-header"><span class="card-title">存储芯片+4.02%，香农芯创20cm涨停市值破千亿</span><span class="price-change up">+4.02%</span></div>
+      <div class="card-chips"><span class="chip chip-hot">9家涨停</span><span class="chip chip-tag">连续182天上榜</span></div>
+      <div class="card-summary">存储芯片连续182天上榜！AI算力推动DDR5和HBM需求爆发，国产替代叠加行业景气上行。要注意的是，今天涨的是大票，小盘存储股没跟，说明资金在优选确定性。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+    <div class="card num-hot" id="card-12"><span class="card-num">12</span>
+      <div class="card-header"><span class="card-title">共封装光学CPO +2.80%，10家涨停，229天连续上榜</span><span class="price-change up">+2.80%</span></div>
+      <div class="card-chips"><span class="chip chip-hot">10家涨停</span><span class="chip chip-tag">连续229天</span></div>
+      <div class="card-summary">CPO连续229天上榜，光模块景气周期持续深化。AI数据中心对高速互联的需求是长期逻辑，但短期过热后会出现分化——追龙头不如找产业链上还没被充分定价的环节。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+    <div class="card num-hot" id="card-13"><span class="card-num">13</span>
+      <div class="card-header"><span class="card-title">芯片概念31家涨停，全市场最热，但真假要分清</span><span class="price-change up">31家涨停</span></div>
+      <div class="card-chips"><span class="chip chip-hot">31家</span><span class="chip chip-tag">科创芯片ETF</span></div>
+      <div class="card-summary">芯片概念31家涨停居全市场第一，资金集中度极高。但吴清主席今天表态坚决整治蹭热点——真假芯片股接下来会明显分化，资金会往有实际业绩的龙头集中。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+    <div class="card num-hot" id="card-14"><span class="card-num">14</span>
+      <div class="card-header"><span class="card-title">锂电池23家、固态电池18家涨停——新能源没掉队</span><span class="price-change up">23家/18家</span></div>
+      <div class="card-chips"><span class="chip chip-tag">锂电池</span><span class="chip chip-tag">固态电池</span></div>
+      <div class="card-summary">锂电池+固态电池双方向涨停数量并不少，储能电池ETF持续吸引资金。虽然今天风头被半导体盖过，但新能源方向资金并未离场，只是主攻方向更偏好"有新技术催化"的标的。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+    <div class="card num-hot" id="card-15"><span class="card-num">15</span>
+      <div class="card-header"><span class="card-title">人形机器人393天上榜，全场最持久的赛道</span><span class="price-change up">393天上榜</span></div>
+      <div class="card-chips"><span class="chip chip-tag">机器人ETF</span><span class="chip chip-tag">13家涨停</span></div>
+      <div class="card-summary">人形机器人连续393天上榜！今天虽然涨幅不大，但资金沉淀深厚。这个板块的特点是：不会每天都爆拉，但资金持续流入，调整时低吸布局是一条中线策略。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+    <div class="card num-hot" id="card-16"><span class="card-num">16</span>
+      <div class="card-header"><span class="card-title">光纤概念+1.13%，6家涨停，58天连续上榜</span><span class="price-change up">+1.13%</span></div>
+      <div class="card-chips"><span class="chip chip-tag">连续58天</span><span class="chip chip-tag">通信ETF</span></div>
+      <div class="card-summary">光纤预制棒涨价驱动通信产业链持续走强，通信ETF交易活跃。但短期涨幅已大，追高性价比降低。关注产业链中下游还没涨起来的环节。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+    <div class="card num-hot" id="card-17"><span class="card-num">17</span>
+      <div class="card-header"><span class="card-title">PET铜箔+2.13%，5天3次上榜，铜箔景气扩散</span><span class="price-change up">+2.13%</span></div>
+      <div class="card-chips"><span class="chip chip-tag">5天3次上榜</span><span class="chip chip-tag">6家涨停</span></div>
+      <div class="card-summary">PET铜箔近期频繁上榜，受益于PCB上游景气扩散。铜箔涨价+HVLP铜箔英伟达认证双驱，诺德股份等龙头走强。这个方向的逻辑比普通PCB更扎实——上游材料涨价更有持续性。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 4 ===== -->
+<section class="section sec-4" id="sec-fund">
+  <div class="section-header"><div class="section-icon">💰</div><h2>四、资金面、情绪与信息差</h2><span class="badge">Fund Flow & Insights</span></div>
+  <div class="card-grid">
+    <div class="card num-idx" id="card-18"><span class="card-num">18</span>
+      <div class="card-header"><span class="card-title">情绪极度分裂：局部火爆 vs 全局惨淡</span></div>
+      <div class="card-chips"><span class="chip chip-hot">赚钱效应两极</span></div>
+      <div class="card-summary">科技方向情绪偏热——商业航天23只涨停、半导体批量封板——踩对了满屏涨停。非科技方向情绪偏冷——3793只下跌——踩错了满仓踏空。这种极端格局对持仓方向判断力要求极高。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+    <div class="card num-idx" id="card-19"><span class="card-num">19</span>
+      <div class="card-header"><span class="card-title">陆家嘴论坛核心信号：央行放水 + 证监会堵路 → 钱去硬科技</span></div>
+      <div class="card-chips"><span class="chip chip-up">央行：推资金入市</span><span class="chip chip-down">证监会：严查炒作</span></div>
+      <div class="card-summary">潘功胜：推动中长期资金加大对股市债市投资。吴清：严查借科技之名蹭热点、炒概念甚至操纵市场。一收一放，资金别无选择只能往正经的硬科技集中。央行特别提了"中长期"，说明不是短炒思维。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+    <div class="card num-idx" id="card-20"><span class="card-num">20</span>
+      <div class="card-header"><span class="card-title">美国暂缓DeepSeek限制 + 智谱IPO = AI双利好</span></div>
+      <div class="card-chips"><span class="chip chip-up">科技封锁缓解</span><span class="chip chip-tag">智谱科创板IPO</span></div>
+      <div class="card-summary">美国商务部暂缓将DeepSeek等中企加入限制清单，缓解科技封锁担忧。智谱科创板IPO辅导验收——AI赛道从概念炒作进入业绩验证+融资落地阶段。长期利好，但不等于明天就涨。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+    <div class="card num-idx" id="card-21"><span class="card-num">21</span>
+      <div class="card-header"><span class="card-title">量能稳定3万亿但未继续放量——新增资金在变慢</span></div>
+      <div class="card-chips"><span class="chip chip-warn">没缩量但也没放量</span></div>
+      <div class="card-summary">成交量维持3.09万亿高位，连续天量后未见继续放大，新增资金进场速度在放缓。历史规律：天量横盘超过3天不创新高，要警惕。明天很关键——要么继续放量突破，要么缩量回调。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+    <div class="card num-idx" id="card-22"><span class="card-num">22</span>
+      <div class="card-header"><span class="card-title">主力资金：电子元器件净流入143亿全市场居首</span></div>
+      <div class="card-chips"><span class="chip chip-up">MLCC/PCB/覆铜板</span></div>
+      <div class="card-summary">电子元器件方向主力净流入居前，通信板块资金强度超4万。资金清一色加仓硬科技，传统周期和消费方向严重失血——这是趋势性调仓信号，不是一日游。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+    <div class="card num-idx" id="card-23"><span class="card-num">23</span>
+      <div class="card-header"><span class="card-title">科创板第五套标准拟纳入AI大模型——中长期利好</span></div>
+      <div class="card-chips"><span class="chip chip-tag">制度创新</span></div>
+      <div class="card-summary">扩容后AI大模型企业可直接在科创板上市，为科技企业融资打开想象空间。但注意：这会增加新股供给，对场内存量资金也有分流效应。优质企业上市 vs 抽血效应，两者之间需要时间验证。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+    <div class="card num-idx" id="card-24"><span class="card-num">24</span>
+      <div class="card-header"><span class="card-title">操作纪律：守纪律、控仓位、不追涨、不杀跌</span></div>
+      <div class="card-chips"><span class="chip chip-tag">5-6成</span><span class="chip chip-tag">不追高</span></div>
+      <div class="card-summary">当前行情看着热闹，但3793只下跌的数据已经说明一切。不要因为指数涨了就冲动追进去。仓位5-6成，留足安全边际。科技仓位已获利丰厚的，可适当止盈锁定部分利润。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+    <div class="card num-idx" id="card-25"><span class="card-num">25</span>
+      <div class="card-header"><span class="card-title">分清短线与中线边界——科技是中长期逻辑</span></div>
+      <div class="card-chips"><span class="chip chip-up">短线注意节奏</span><span class="chip chip-tag">中线可低吸</span></div>
+      <div class="card-summary">AI算力、半导体国产替代、PCB景气周期是中长期逻辑，短线波动不改中线趋势。短线交易者注意节奏和止盈，中线投资者可利用回调分批低吸。纯蹭热点的票，吴主席的话已经够明显。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+
+    <!-- 信息差卡片 -->
+    <div class="card num-idx" id="card-26"><span class="card-num">26</span>
+      <div class="card-header"><span class="card-title">🔍 太辰光昨天游资净买2.53亿，光库科技作手新一买入</span></div>
+      <div class="card-chips"><span class="chip chip-info">龙虎榜</span><span class="chip chip-tag">老郑团队追踪</span><span class="chip chip-up">游资净买2.53亿</span></div>
+      <div class="card-summary">昨天龙虎榜上，太辰光（光模块）三日净买入2.53亿，总买入额22.53亿对总卖出额20.01亿，游资积极介入。今天光通信方向延续强势，这些先手资金已经吃到了肉。知道游资在哪个方向上建仓，比知道涨幅更有价值。</div>
+      <div class="card-footer"><span class="card-time">6月16日龙虎榜 · 6月17日验证</span></div>
+    </div>
+    <div class="card num-idx" id="card-27"><span class="card-num">27</span>
+      <div class="card-header"><span class="card-title">📌 半导体连续864天上榜——这不是热点，是产业趋势</span></div>
+      <div class="card-chips"><span class="chip chip-info">数据挖掘</span><span class="chip chip-tag">老郑团队统计</span><span class="chip chip-tag">864天霸榜</span></div>
+      <div class="card-summary">很多人以为半导体只是最近热，其实它已经连续864天霸榜东方财富热榜。864天什么概念？从2024年到现在，A股没有任何一个板块有这种持续性。这不是短线热点轮动，是产业逻辑驱动的长周期行情。按这个逻辑——调整即入场机会。</div>
+      <div class="card-footer"><span class="card-time">864天热榜持续追踪</span></div>
+    </div>
+    <div class="card num-idx" id="card-28"><span class="card-num">28</span>
+      <div class="card-header"><span class="card-title">📌 缺货正在从存储芯片扩散到被动元件</span></div>
+      <div class="card-chips"><span class="chip chip-info">产业链传导</span><span class="chip chip-tag">老郑团队研判</span><span class="chip chip-tag">MLCC</span><span class="chip chip-tag">覆铜板</span></div>
+      <div class="card-summary">存储芯片涨价炒了一轮了，接下来要关注的是：缺货正在沿着产业链往被动元件（MLCC、电阻、电感）、覆铜板方向扩散。今天这些方向已经开始涨停——但不是所有人都意识到了这是同一轮产业链传导。先看懂的人先布局。</div>
+      <div class="card-footer"><span class="card-time">产业链定期追踪</span></div>
+    </div>
+    <div class="card num-idx" id="card-29"><span class="card-num">29</span>
+      <div class="card-header"><span class="card-title">📌 科创芯片ETF近期持续大额申购——钱在流进来</span></div>
+      <div class="card-chips"><span class="chip chip-info">资金暗线</span><span class="chip chip-tag">老郑团队监测</span><span class="chip chip-up">科创芯片ETF</span><span class="chip chip-tag">32万份</span></div>
+      <div class="card-summary">科创芯片ETF今天成交32万多份，持续霸榜大虾皮热门ETF。很多散户不知道的是：ETF大额申购意味着机构在借道建仓。流动性最好、确定性最高——这路资金从来不打游击，是长线配置思维。</div>
+      <div class="card-footer"><span class="card-time">大虾皮ETF数据</span></div>
+    </div>
+    <div class="card num-idx" id="card-30"><span class="card-num">30</span>
+      <div class="card-header"><span class="card-title">📌 吴清今天话里有话——"严查蹭热点"针对的是谁？</span></div>
+      <div class="card-chips"><span class="chip chip-info">政策暗线</span><span class="chip chip-tag">老郑团队解读</span><span class="chip chip-down">炒作概念型要小心</span></div>
+      <div class="card-summary">吴清主席在陆家嘴论坛说"严查严处借科技之名蹭热点、炒概念甚至操纵市场"——这不是泛泛而谈的套话。配合今天31家芯片概念涨停的背景下，这话的指向非常明确：那些纯粹靠概念、没有业绩支撑的科技小票，接下来监管会重点关注。手里有这类票的，建议做好功课。</div>
+      <div class="card-footer"><span class="card-time">陆家嘴论坛 · 吴清讲话</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 5 ===== -->
+<section class="section sec-5" id="sec-stocks">
+  <div class="section-header"><div class="section-icon">🎯</div><h2>五、热门个股</h2><span class="badge">Hot Stocks</span></div>
+  <div class="card-grid">
+    <div class="card num-hot" id="card-31"><span class="card-num">31</span>
+      <div class="card-header"><span class="card-title">香农芯创20cm涨停，存储芯片龙头市值突破千亿</span><span class="price-change up">+20.00%</span></div>
+      <div class="card-chips"><span class="chip chip-hot">千亿市值里程碑</span></div>
+      <div class="card-summary">代理式AI驱动半导体需求上行，存储芯片方向受益最明确。千亿是机构配置门槛，突破后被动资金会持续流入——但今天涨幅过大，明天冲高不宜追。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+    <div class="card num-hot" id="card-32"><span class="card-num">32</span>
+      <div class="card-header"><span class="card-title">铂力特20分钟封死20%涨停，商业航天总龙头</span><span class="price-change up">+20.00%</span></div>
+      <div class="card-chips"><span class="chip chip-hot">开盘20分钟封板</span></div>
+      <div class="card-summary">商业航天调整多日后突然爆发，铂力特秒板带动23只涨停。是真反转还是超跌反弹？关键看明天——能连板则确认趋势反转，明天直接开的则小心一日游。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+    <div class="card num-hot" id="card-33"><span class="card-num">33</span>
+      <div class="card-header"><span class="card-title">盛美上海触及20cm涨停，半导体设备龙头集体爆发</span><span class="price-change up">+20.00%</span></div>
+      <div class="card-chips"><span class="chip chip-hot">华峰测控/中微公司跟进</span></div>
+      <div class="card-summary">半导体设备方向全线走强，华峰测控、长川科技、华海清科、中微公司集体大涨。设备是半导体国产替代最确定的方向——不管谁造芯片，都得买设备。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+    <div class="card num-hot" id="card-34"><span class="card-num">34</span>
+      <div class="card-header"><span class="card-title">联讯仪器再创历史新高2378.68元，A股"股王"</span><span class="price-change up">历史新高</span></div>
+      <div class="card-chips"><span class="chip chip-hot">机构持续加仓</span></div>
+      <div class="card-summary">A股股王盘中最高触及2378.68元再创新高。它的走势直接影响整个科技板块的风向——龙头不倒，行情不绝。但要注意，新高附近的获利盘也会引发震荡。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+    <div class="card num-hot" id="card-35"><span class="card-num">35</span>
+      <div class="card-header"><span class="card-title">华正新材涨停：覆铜板龙头，PCB景气全链共振</span><span class="price-change up">+10.00%</span></div>
+      <div class="card-chips"><span class="chip chip-up">覆铜板年内多轮涨价</span><span class="chip chip-tag">深南电路同涨</span></div>
+      <div class="card-summary">覆铜板龙头年内多轮涨价，AI驱动PCB上游全线景气。深南电路、鹏鼎控股同期涨停，全产业链共振。但板块短期累积涨幅过大，追高风险显著——等分歧再动手。</div>
+      <div class="card-footer"><span class="card-time">今天下午 15:00</span></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <p>
+    本日报共收录 <strong>35</strong> 条资讯，覆盖大盘指数、行业板块、概念热点、资金面与情绪（含信息差）、热门个股五大版块。<br>
+    以上分析内容来源于 <strong>老郑团队</strong>（投资顾问：郑博文 A0660625080034 · 钱浩 A0660626050068）<br>
+    统计数据截止时间：2026年6月17日 15:00 收盘
+  </p>
+  <p class="disclaimer">
+    ⚠️ 免责声明：本文由老郑团队编辑整理。所涉及个股仅作案例分析，不作为买卖依据。股市有风险，投资需谨慎。
+  </p>
+</footer>
+
+<script>
+(function() {
+  const sections = document.querySelectorAll('.section');
+  const navLinks = document.querySelectorAll('.nav-inner a');
+  function updateActive() {
+    let current = '';
+    sections.forEach(s => { if (s.getBoundingClientRect().top <= 120) current = s.id; });
+    navLinks.forEach(l => { l.classList.toggle('active', l.getAttribute('href') === '#' + current); });
+  }
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+})();
+(function() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.card, .index-card, .market-overview').forEach(el => observer.observe(el));
+})();
+</script>
+</body>
+</html>

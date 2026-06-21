@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股日报 · 钱浩 | 2026年6月19日</title>
+<style>
+  :root {
+    --bg: #0f0f14; --card-bg: #1a1a24; --text: #e8e8ed; --text-secondary: #9ca3af;
+    --accent: #ff6b35; --accent-light: #ff8c5a; --gradient-start: #ff4d1c; --gradient-end: #ff8c3a;
+    --up: #ef4444; --down: #22c55e; --border: #2a2a38; --chip-bg: #252535;
+    --hero-bg: linear-gradient(135deg, #1a0a05 0%, #2d1210 40%, #1a1020 100%);
+    --font-mono: 'SF Mono', 'Cascadia Code', 'JetBrains Mono', 'Menlo', monospace;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-sans); background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
+  .hero { background: var(--hero-bg); position: relative; overflow: hidden; padding: 60px 24px 48px; text-align: center; }
+  .hero::before { content:''; position:absolute; top:-50%; left:-20%; width:140%; height:200%; background: radial-gradient(ellipse at 30% 50%, rgba(255,107,53,0.12) 0%, transparent 60%), radial-gradient(ellipse at 70% 50%, rgba(255,77,28,0.08) 0%, transparent 60%); pointer-events:none; }
+  .hero::after { content:''; position:absolute; bottom:0; left:0; right:0; height:60px; background:linear-gradient(to top, var(--bg), transparent); pointer-events:none; }
+  .hero-content { position:relative; z-index:1; max-width:900px; margin:0 auto; }
+  .hero-badge { display:inline-block; padding:6px 18px; border-radius:20px; background:linear-gradient(135deg, rgba(255,77,28,0.2), rgba(255,139,58,0.2)); border:1px solid rgba(255,107,53,0.3); color:var(--accent-light); font-size:13px; font-weight:600; margin-bottom:20px; }
+  .hero h1 { font-size:clamp(28px, 5vw, 48px); font-weight:800; background:linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 50%, #ffb347 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:8px; }
+  .hero-date { font-size:16px; color:var(--text-secondary); margin-bottom:28px; }
+  .hero-stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; }
+  .hero-stat { text-align:center; min-width:80px; }
+  .hero-stat .num { font-size:32px; font-weight:800; font-family:var(--font-mono); color:var(--accent-light); line-height:1; }
+  .hero-stat .label { font-size:12px; color:var(--text-secondary); margin-top:6px; }
+  .hero-stat.total .num { font-size:48px; color:#fff; }
+
+  .nav-bar { position:sticky; top:0; z-index:100; background:rgba(15,15,20,0.92); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); padding:0 16px; overflow-x:auto; white-space:nowrap; scrollbar-width:none; }
+  .nav-bar::-webkit-scrollbar { display:none; }
+  .nav-inner { max-width:1100px; margin:0 auto; display:flex; gap:4px; padding:8px 0; }
+  .nav-inner a { display:inline-flex; align-items:center; gap:6px; padding:8px 16px; border-radius:20px; color:var(--text-secondary); text-decoration:none; font-size:13px; font-weight:500; transition:all 0.2s; white-space:nowrap; }
+  .nav-inner a:hover, .nav-inner a.active { background:rgba(255,107,53,0.15); color:var(--accent-light); }
+  .nav-count { font-size:11px; background:rgba(255,107,53,0.2); color:var(--accent-light); padding:1px 7px; border-radius:10px; font-family:var(--font-mono); }
+
+  .main { max-width:1100px; margin:0 auto; padding:32px 16px 60px; }
+  .section { margin-bottom:48px; }
+  .section-header { display:flex; align-items:center; gap:12px; margin-bottom:24px; padding-bottom:12px; border-bottom:2px solid var(--border); }
+  .section-icon { width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+  .section-header h2 { font-size:20px; font-weight:700; flex:1; }
+  .section-header .badge { font-size:12px; color:var(--text-secondary); font-weight:500; background:var(--chip-bg); padding:4px 12px; border-radius:12px; }
+  .sec-1 .section-icon { background:rgba(255,77,28,0.15); }
+  .sec-2 .section-icon { background:rgba(59,130,246,0.15); }
+  .sec-3 .section-icon { background:rgba(168,85,247,0.15); }
+  .sec-4 .section-icon { background:rgba(234,179,8,0.15); }
+  .sec-5 .section-icon { background:rgba(34,197,94,0.15); }
+
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:16px; }
+  .card { background:var(--card-bg); border:1px solid var(--border); border-radius:12px; padding:18px 20px; position:relative; transition:all 0.25s ease; opacity:0; transform:translateY(24px); animation:fadeInUp 0.5s forwards; }
+  .card:hover { border-color:rgba(255,107,53,0.3); transform:translateY(-2px); box-shadow:0 4px 24px rgba(0,0,0,0.3); }
+  .card.num-idx { border-left:3px solid var(--accent); }
+  .card.num-hot { border-left:3px solid #ef4444; }
+  @keyframes fadeInUp { to { opacity:1; transform:translateY(0); } }
+  .card-num { position:absolute; top:-10px; left:-10px; width:28px; height:28px; border-radius:50%; background:linear-gradient(135deg, var(--gradient-start), var(--gradient-end)); color:#fff; font-size:12px; font-weight:700; font-family:var(--font-mono); display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(255,77,28,0.3); }
+  .card-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; flex-wrap:wrap; gap:8px; }
+  .card-title { font-size:15px; font-weight:700; line-height:1.4; flex:1; min-width:0; }
+  .price-change { font-family:var(--font-mono); font-size:14px; font-weight:700; white-space:nowrap; }
+  .up { color:var(--up); } .down { color:var(--down); }
+  .card-chips { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px; }
+  .chip { display:inline-block; padding:3px 10px; border-radius:12px; font-size:11px; font-weight:600; white-space:nowrap; }
+  .chip-tag { background:var(--chip-bg); color:var(--text-secondary); }
+  .chip-hot { background:rgba(239,68,68,0.12); color:#f87171; }
+  .chip-up { background:rgba(239,68,68,0.1); color:var(--up); }
+  .chip-down { background:rgba(34,197,94,0.1); color:var(--down); }
+  .chip-info { background:rgba(251,191,36,0.12); color:#fbbf24; }
+  .card-summary { font-size:13px; color:var(--text-secondary); line-height:1.6; margin-bottom:12px; }
+  .card-footer { display:flex; align-items:center; justify-content:space-between; }
+  .card-time { font-size:12px; color:#6b7280; }
+
+  .index-cards { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:12px; margin-bottom:20px; }
+  .index-card { background:var(--card-bg); border:1px solid var(--border); border-radius:12px; padding:16px; text-align:center; opacity:0; transform:translateY(16px); animation:fadeInUp 0.4s forwards; }
+  .index-card .index-name { font-size:13px; color:var(--text-secondary); margin-bottom:6px; }
+  .index-card .index-price { font-size:22px; font-weight:800; font-family:var(--font-mono); margin-bottom:4px; }
+  .index-card .index-change { font-size:14px; font-weight:700; font-family:var(--font-mono); }
+
+  .market-overview { background:var(--card-bg); border:1px solid var(--border); border-radius:12px; padding:24px; display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:20px; opacity:0; animation:fadeInUp 0.4s 0.1s forwards; }
+  .mo-item { text-align:center; }
+  .mo-item .mo-value { font-size:24px; font-weight:800; font-family:var(--font-mono); }
+  .mo-item .mo-label { font-size:12px; color:var(--text-secondary); margin-top:4px; }
+
+  .footer { max-width:1100px; margin:0 auto; padding:24px 16px 40px; text-align:center; border-top:1px solid var(--border); }
+  .footer p { font-size:12px; color:#6b7280; line-height:1.8; }
+  .footer .disclaimer { margin-top:12px; color:#4b5563; font-size:11px; }
+  @media (max-width:640px) { .hero{padding:40px 16px 36px} .hero-stats{gap:16px} .hero-stat .num{font-size:24px} .hero-stat.total .num{font-size:36px} .card-grid{grid-template-columns:1fr} .index-cards{grid-template-columns:repeat(2,1fr)} .market-overview{grid-template-columns:repeat(2,1fr)} .section-header h2{font-size:17px} }
+  .card:nth-child(1){animation-delay:0.02s} .card:nth-child(2){animation-delay:0.04s} .card:nth-child(3){animation-delay:0.06s} .card:nth-child(4){animation-delay:0.08s} .card:nth-child(5){animation-delay:0.10s} .card:nth-child(6){animation-delay:0.12s} .card:nth-child(7){animation-delay:0.14s} .card:nth-child(8){animation-delay:0.16s} .card:nth-child(9){animation-delay:0.18s} .card:nth-child(10){animation-delay:0.20s} .card:nth-child(n+11){animation-delay:0.22s}
+  .index-card:nth-child(1){animation-delay:0.02s} .index-card:nth-child(2){animation-delay:0.06s} .index-card:nth-child(3){animation-delay:0.10s} .index-card:nth-child(4){animation-delay:0.14s} .index-card:nth-child(5){animation-delay:0.18s}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-content">
+    <span class="hero-badge">📊 钱浩 · 产业链研究</span>
+    <h1>A股日报</h1>
+    <p class="hero-date">2026年6月19日 · 周五 · 收盘复盘</p>
+    <div class="hero-stats">
+      <div class="hero-stat total"><div class="num">20</div><div class="label">精选条数</div></div>
+      <div class="hero-stat"><div class="num">5</div><div class="label">大盘指数</div></div>
+      <div class="hero-stat"><div class="num">5</div><div class="label">行业板块</div></div>
+      <div class="hero-stat"><div class="num">4</div><div class="label">概念热点</div></div>
+      <div class="hero-stat"><div class="num">6</div><div class="label">资金与信息差</div></div>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-bar" id="nav">
+  <div class="nav-inner">
+    <a href="#sec-market">📈 大盘<span class="nav-count">5</span></a>
+    <a href="#sec-sector">🏭 板块<span class="nav-count">5</span></a>
+    <a href="#sec-concept">🔥 概念<span class="nav-count">4</span></a>
+    <a href="#sec-fund">💰 资金与信息差<span class="nav-count">6</span></a>
+  </div>
+</nav>
+
+<main class="main">
+
+<!-- ===== 大盘 ===== -->
+<section class="section sec-1" id="sec-market"><div class="section-header"><div class="section-icon">📈</div><h2>一、大盘指数</h2></div>
+<div class="index-cards">
+  <div class="index-card"><div class="index-name">上证指数</div><div class="index-price" style="color:var(--down)">4090.48</div><div class="index-change down">-0.43%</div></div>
+  <div class="index-card"><div class="index-name">科创50 🚀</div><div class="index-price" style="color:var(--up)">1911.51</div><div class="index-change up">+3.84% 历史新高</div></div>
+  <div class="index-card"><div class="index-name">深证成指</div><div class="index-price" style="color:var(--up)">16030.70</div><div class="index-change up">+0.94%</div></div>
+  <div class="index-card"><div class="index-name">创业板指</div><div class="index-price" style="color:var(--up)">4252.39</div><div class="index-change up">+2.05% 阶段新高</div></div>
+  <div class="index-card"><div class="index-name">沪深300</div><div class="index-price" style="color:var(--down)">4271.36</div><div class="index-change down">-0.38%</div></div>
+</div>
+<div class="market-overview">
+  <div class="mo-item"><div class="mo-value" style="color:var(--accent-light)">3.31万亿</div><div class="mo-label">两市成交额</div></div>
+  <div class="mo-item"><div class="mo-value" style="color:var(--down)">3300+</div><div class="mo-label">下跌家数</div></div>
+  <div class="mo-item"><div class="mo-value" style="color:var(--up)">科技硬件</div><div class="mo-label">领涨方向</div></div>
+  <div class="mo-item"><div class="mo-value" style="color:var(--up)">科创50新高</div><div class="mo-label">全场最强指数</div></div>
+</div>
+<div class="card-grid" style="margin-top:20px">
+  <div class="card num-idx"><span class="card-num">1</span><div class="card-header"><span class="card-title">科创50暴涨3.84%创历史新高——全场最强</span></div><div class="card-chips"><span class="chip chip-hot">历史新高</span><span class="chip chip-tag">钱浩</span></div><div class="card-summary">科创50收盘1911.51点，创板块上市以来历史新高。科技硬件全线爆发，非金属材料、半导体、生物科技领涨——这就是我们一直说的，资金往确定性方向集中的趋势。</div><div class="card-footer"><span class="card-time">今天下午 15:00</span></div></div>
+  <div class="card num-idx"><span class="card-num">2</span><div class="card-header"><span class="card-title">沪指跌0.43%但不必慌——拆开看</span></div><div class="card-chips"><span class="chip chip-calm">结构性分化</span></div><div class="card-summary">上证全天冲高4117后回落收4090。不是普跌，是资金从保险、电力、煤炭这些传统板块往外撤——传统的跌，科技的涨。这个结构感，跟上周末说的逻辑完全一致。</div><div class="card-footer"><span class="card-time">今天下午 15:00</span></div></div>
+</div>
+</section>
+
+<!-- ===== 板块 ===== -->
+<section class="section sec-2" id="sec-sector"><div class="section-header"><div class="section-icon">🏭</div><h2>二、行业板块</h2></div>
+<div class="card-grid">
+  <div class="card num-idx"><span class="card-num">3</span><div class="card-header"><span class="card-title">非金属材料暴涨领涨全场</span><span class="price-change up">+5.83%</span></div><div class="card-chips"><span class="chip chip-hot">新材料</span></div><div class="card-summary">非金属材料方向涨幅全场第一，受益于半导体上游材料国产替代加速+扩产周期。这个方向很多散户还没注意到，但资金已经在布局。</div></div>
+  <div class="card num-idx"><span class="card-num">4</span><div class="card-header"><span class="card-title">半导体继续霸榜——存储+设备双轮驱动</span><span class="price-change up">+3.55%</span></div><div class="card-chips"><span class="chip chip-hot">连续多日</span></div><div class="card-summary">半导体从设备到材料到存储全线走强。上周说半导体是产业趋势不是短线热点——本周每天验证。别追高，等分歧吸。</div></div>
+  <div class="card num-idx"><span class="card-num">5</span><div class="card-header"><span class="card-title">生物科技异动——创新药ETF持续活跃</span><span class="price-change up">+2.31%</span></div><div class="card-chips"><span class="chip chip-tag">创新药连续60天上榜</span></div><div class="card-summary">创新药板块连续60天上榜，ETF持续吸引资金。虽然今天风头被硬件盖过，但这是一个低调但资金在默默进入的方向。</div></div>
+  <div class="card num-idx"><span class="card-num">6</span><div class="card-header"><span class="card-title">保险-3.14%、电力-2.18%、煤炭-1.83%——谁在卖？</span><span class="price-change down">传统板块全线下跌</span></div><div class="card-chips"><span class="chip chip-down">传统权重失血</span></div><div class="card-summary">传统权重板块大幅回调，资金从防御性资产撤出转向科技成长。这不是一日游，是趋势性调仓。手里有这类票的，建议找投顾梳理。</div></div>
+</div>
+</section>
+
+<!-- ===== 概念 ===== -->
+<section class="section sec-3" id="sec-concept"><div class="section-header"><div class="section-icon">🔥</div><h2>三、概念热点</h2></div>
+<div class="card-grid">
+  <div class="card num-hot"><span class="card-num">7</span><div class="card-header"><span class="card-title">存储芯片+2.51%，6家涨停</span><span class="price-change up">+2.51%</span></div><div class="card-chips"><span class="chip chip-hot">6家涨停</span></div><div class="card-summary">存储芯片连续上榜，AI算力推动DDR5和HBM需求持续爆发。但注意分化——涨的仍然是龙头，蹭热度的没跟。</div></div>
+  <div class="card num-hot"><span class="card-num">8</span><div class="card-header"><span class="card-title">玻璃基板+2.96%首次上榜——新方向</span><span class="price-change up">+2.96%</span></div><div class="card-chips"><span class="chip chip-tag">首次上榜</span></div><div class="card-summary">玻璃基板首次进入热榜，这个方向跟先进封装密切关联。首次上榜往往意味着初期资金试探——小仓位关注，不上重仓。</div></div>
+  <div class="card num-hot"><span class="card-num">9</span><div class="card-header"><span class="card-title">人形机器人394天上榜——全场最持久</span><span class="price-change up">+1.26%</span></div><div class="card-chips"><span class="chip chip-tag">394天霸榜</span></div><div class="card-summary">人形机器人连续394天上榜，14家涨停。这个方向的特点是持续但不爆发——中线布局的优质选择，调整即机会。</div></div>
+  <div class="card num-hot"><span class="card-num">10</span><div class="card-header"><span class="card-title">液冷服务器+1.41%，9家涨停——跟着算力走</span><span class="price-change up">+1.41%</span></div><div class="card-chips"><span class="chip chip-tag">AI算力配套</span></div><div class="card-summary">液冷是AI数据中心的关键配套，跟着算力基建走。5天4次上榜，资金关注度显著提升。注意跟光模块、CPO联动的节奏。</div></div>
+</div>
+</section>
+
+<!-- ===== 资金与信息差 ===== -->
+<section class="section sec-4" id="sec-fund"><div class="section-header"><div class="section-icon">💰</div><h2>四、资金面与信息差</h2></div>
+<div class="card-grid">
+  <div class="card num-idx"><span class="card-num">11</span><div class="card-header"><span class="card-title">成交额3.31万亿——量能还在，问题不大</span></div><div class="card-chips"><span class="chip chip-tag">放量</span></div><div class="card-summary">3.31万亿成交额维持高位，说明市场不缺乏机会。放量调整好于缩量杀跌——有量就有方向选择的空间。下周重点关注首小时成交量。</div></div>
+  <div class="card num-idx"><span class="card-num">12</span><div class="card-header"><span class="card-title">3300+只下跌的信号——结构性行情持续深化</span></div><div class="card-chips"><span class="chip chip-warn">指数牛个股熊</span></div><div class="card-summary">3300多只个股下跌，但科创50创历史新高。这个数据的含义：资金越来越集中，往确定性方向抱团。分散持有可能是在分散亏钱。</div></div>
+  <div class="card num-idx"><span class="card-num">13</span><div class="card-header"><span class="card-title">📌 芯片概念连续54天上榜——22家涨停</span></div><div class="card-chips"><span class="chip chip-info">数据跟踪</span><span class="chip chip-tag">钱浩统计</span></div><div class="card-summary">芯片概念连续54天霸榜，22家涨停。从我们开始跟踪到现在，这个方向没有断过一天。这不是热点轮动，是产业逻辑驱动的长周期行情。</div></div>
+  <div class="card num-idx"><span class="card-num">14</span><div class="card-header"><span class="card-title">📌 稀土永磁+2.49%，5天5次上榜</span></div><div class="card-chips"><span class="chip chip-info">持续性验证</span><span class="chip chip-tag">钱浩追踪</span></div><div class="card-summary">稀土永磁5天5次上榜，矿法实施带来的战略重估持续发酵。这个方向容量大、资金深，适合中长线配置。</div></div>
+  <div class="card num-idx"><span class="card-num">15</span><div class="card-header"><span class="card-title">📌 科创芯片ETF持续霸榜——机构资金特征明显</span></div><div class="card-chips"><span class="chip chip-info">资金暗线</span><span class="chip chip-tag">钱浩监测</span></div><div class="card-summary">科创芯片ETF交易额持续放量，22只芯片涨停。ETF大额申购=机构借道建仓。这路资金不搞短线，意味着什么你懂的。</div></div>
+</div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <p>
+    本日报由 <strong>钱浩</strong> 编辑整理（投资顾问：钱浩 A0660626050068）<br>
+    数据截止时间：2026年6月19日 15:00 收盘<br>
+    每周战绩回顾请联系你的专属投顾
+  </p>
+  <p class="disclaimer">⚠️ 所涉及个股仅作案例分析，不作为买卖依据。股市有风险，投资需谨慎。</p>
+</footer>
+
+<script>
+(function(){const s=document.querySelectorAll('.section'),l=document.querySelectorAll('.nav-inner a');function u(){let c='';s.forEach(s=>{if(s.getBoundingClientRect().top<=120)c=s.id});l.forEach(l=>{l.classList.toggle('active',l.getAttribute('href')==='#'+c)})}window.addEventListener('scroll',u,{passive:true});u()})();
+(function(){const o=new IntersectionObserver((e)=>{e.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.card,.index-card,.market-overview').forEach(e=>o.observe(e))})();
+</script>
+</body>
+</html>
